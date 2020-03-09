@@ -2111,26 +2111,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2153,8 +2133,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.day_data = day;
       this.active = true;
       this.available = true;
-      this.editIndex = index; // this.modal = true
-
+      this.editIndex = index;
       this.isAdd = true;
       this.viewSlots();
     },
@@ -2175,7 +2154,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context.sent;
 
                 if (res.status == 201) {
-                  // console.log(res.data);
                   _this.s(' Slot have been successfully Assigned!');
 
                   _this.AssignSlots.push(res.data);
@@ -2258,17 +2236,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.booked_data = _.cloneDeep(item);
       this.booked_data.isBooked = 1;
       this.editIndex = index;
-      this.press_book(); // let ob = {
-      //     id:item.id,
-      //     isBooked:1
-      // }
-      // this.editIndex = index
-      // const res = await this.callApi('post',`booked`,ob)
-      // if(res.status == 200){
-      //     this.AssignSlots[this.editIndex] = res.data
-      //     this.editIndex = -1 
-      //     // this.AssignSlots = res.data
-      // }
+      this.press_book();
     }
   },
   created: function created() {

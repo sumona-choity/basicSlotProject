@@ -46,7 +46,6 @@
             title="Add a Slot"
             @on-ok="form_submmit"
             @on-cancel="add_modal = false">
-            
             <div class="left_atten_card">
                 <div class="pro_left_input"> 
                     <div class="_1st_input_pro">
@@ -60,25 +59,6 @@
                 </div>
             </div>
         </Modal>
-    <!-- <Modal
-            v-model="modal"
-            title="Add a slot"
-            @on-cancel="modal = false">
-
-            <div class="left_atten_card">
-                
-                <div class="pro_left_input"> 
-                    <div class="_1st_input_pro">
-                        <div class="left_name_pro">
-                            <span class="input_title">Slot</span>
-                        </div>
-                        <div class="right_input_pro">
-                            <Input v-model="day_data.slot" style="width: 100%" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Modal> -->
 </div>
 
 </template>
@@ -106,7 +86,6 @@
             this.active = true
             this.available =true
             this.editIndex = index
-			// this.modal = true
             this.isAdd = true
             this.viewSlots();
             },
@@ -118,7 +97,6 @@
                     this.ob.slot = this.slot
                 const res = await this.callApi('post','AssignSlot',this.ob)
                 if(res.status == 201){
-                    // console.log(res.data);
                     this.s(' Slot have been successfully Assigned!')
                     this.AssignSlots.push(res.data)
                     this.slot = ''
@@ -128,10 +106,6 @@
                 }
         },
             async press_book () {
-                // if (this.edit_data.name=='')return  this.i('Name can not be empty!')
-                // if (this.edit_data.email=='') return this.i('Email can not be empty!')
-                // if (this.edit_data.address =='')  return this.i('Address can not be empty!')
-                // if (this.edit_data.phone == '' ) return this.i("Phone can not be empty!")
                 const res = await this.callApi('post', 'booked', this.booked_data)
                 if (res.status === 200) {
                     this.AssignSlots[this.editIndex] = _.clone(this.booked_data)
@@ -154,28 +128,9 @@
                 this.booked_data.isBooked = 1
                 this.editIndex = index
                 this.press_book();
-                // let ob = {
-                //     id:item.id,
-                //     isBooked:1
-                // }
-                // this.editIndex = index
-                // const res = await this.callApi('post',`booked`,ob)
-                // if(res.status == 200){
-                //     this.AssignSlots[this.editIndex] = res.data
-                //     this.editIndex = -1 
-                //     // this.AssignSlots = res.data
-                // }
-            },
-            
-        
+            },  
     },
     async created(){
-        // let [res] = await Promise.all([
-        //         this.callApi('get',`showSlot`)]);
-        //     if(res.status == 200){
-        //         this.AssignSlots = res.data
-        //     }
-        // }
         let [res] = await Promise.all([
                 this.callApi('get',`showSlot?day=${this.day_data}`)]);
             if(res.status == 200){
